@@ -1,11 +1,13 @@
-import React from 'react';
-import { Dimensions, SafeAreaView } from 'react-native';
-import styled from 'styled-components/native'
+import React, { useState } from 'react';
+import { Dimensions, SafeAreaView, Alert } from 'react-native';
+import styled from 'styled-components/native';
+import axios from 'axios';
 
 import InputText from '../../components/InputText/index'
 import SignUp1 from '../SignUp/SignUp1';
 
 const { width, height } = Dimensions.get('window');
+
 const SC = {
     container: styled.View`
         height : ${height}px;
@@ -52,6 +54,34 @@ const SC = {
     `
 }
 const LoginPage = ({ navigation }: any) => {
+
+    const [IDValue, setIDValue] = useState("");
+    const [PWValue, setPWValue] = useState("");
+
+    const login = () => {
+        axios.post('http://3.12.241.33:8000/auth/login', {
+            id: IDValue,
+            password: PWValue,
+        })
+            .then(function (response) {
+                response.data.success === "true" ?
+                    navigation.reset({ routes: [{ name: 'MainPage' }] })
+                    : Alert.alert(
+                        'Alert Title',
+                        'My Alert Msg',
+                        [
+                            { text: 'Ask me later', onPress: () => console.log('Ask me later pressed') },
+                            { text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
+                            { text: 'OK', onPress: () => console.log('OK Pressed') },
+                        ],
+                        { cancelable: false }
+                    )
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
     return (
         <SafeAreaView style={{ backgroundColor: '#6666FF' }}>
 
@@ -59,16 +89,14 @@ const LoginPage = ({ navigation }: any) => {
                 <SC.introduceText>
                     걱정되는{"\n"}코로나19 백신 부작용, {"\n"}쉽게 확인해보세요.
                 </SC.introduceText>
-                <InputText placeHolder='아이디' type='id'></InputText>
-                <InputText placeHolder='비밀번호' type='pw'></InputText>
+                <InputText placeHolder='아이디' type='id' value={IDValue} getValue={setIDValue}></InputText>
+                <InputText placeHolder='비밀번호' type='pw' value={PWValue} getValue={setPWValue}></InputText>
                 <SC.loginBtn onPress={() => {
                     navigation.reset({ routes: [{ name: 'MainPage' }] })
                 }}>
                     <SC.loginBtnText>로그인</SC.loginBtnText>
                 </SC.loginBtn>
-                <SC.signUpBtn onPress={() => {
-                    navigation.navigate('SignUp1');
-                }}>
+                <SC.signUpBtn onPress={login}>
                     <SC.signUpBtnText>회원가입</SC.signUpBtnText>
                 </SC.signUpBtn>
             </SC.container>

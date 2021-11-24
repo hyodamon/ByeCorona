@@ -7,26 +7,23 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject",
-    "test": "jest"
+    "eject": "expo eject"
   },
   "dependencies": {
-    "@react-native-community/masked-view": "^0.1.11",
-    "@react-navigation/drawer": "^6.1.8",
-    "@react-navigation/material-top-tabs": "^6.0.6",
-    "@react-navigation/native": "^6.0.6",
-    "@react-navigation/stack": "^6.0.11",
+    "@expo/ngrok": "^4.1.0",
+    "@react-navigation/material-top-tabs": "^6.0.4",
+    "@react-navigation/native": "^6.0.4",
+    "@react-navigation/stack": "^6.0.9",
     "@types/react-redux": "^7.1.20",
     "@types/redux-logger": "^3.0.9",
-    "expo": "~43.0.0",
+    "axios": "^0.24.0",
+    "expo": "^43.0.0",
     "expo-splash-screen": "~0.13.3",
     "expo-status-bar": "~1.1.0",
     "expo-updates": "~0.10.5",
-    "radio-buttons-react-native": "^1.0.4",
-    "react": "16.13.1",
+    "react": "17.0.1",
     "react-dom": "17.0.1",
-    "react-native": "0.63.4",
-    "react-native-bootsplash": "^3.2.6",
+    "react-native": "^0.66.2",
     "react-native-gesture-handler": "~1.10.2",
     "react-native-pager-view": "5.4.6",
     "react-native-reanimated": "~2.2.0",
@@ -36,27 +33,32 @@
     "react-native-tab-view": "^3.1.1",
     "react-native-web": "0.17.1",
     "react-native-webview": "11.13.0",
-    "react-redux": "^7.2.6",
-    "redux": "^4.1.2",
-    "redux-devtools-extension": "^2.13.9",
-    "redux-logger": "^3.0.6",
-    "redux-promise-middleware": "^6.1.2",
-    "redux-thunk": "^2.4.0",
     "styled-components": "^5.3.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
+    "@types/expo": "^33.0.1",
     "@types/react": "~17.0.21",
-    "@types/react-native": "^0.64.18",
+    "@types/react-native": "~0.64.12",
+    "@types/react-navigation": "^3.4.0",
     "@types/styled-components": "^5.1.15",
-    "@types/styled-components-react-native": "^5.1.2",
-    "jest": "^27.3.1",
+    "@types/styled-components-react-native": "^5.1.1",
     "jest-expo": "^43.0.1",
+    "react-test-renderer": "^17.0.2",
+    "ts-loader": "^9.2.6",
     "typescript": "~4.3.5"
   },
   "private": true,
+  "rnpm": {
+    "assets": [
+      "./assets/fonts"
+    ]
+  },
   "jest": {
-    "preset": "react-native",
+    "preset": "jest-expo",
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|@sentry/.*)"
+    ],
     "setupFiles": [
       "./jest/setup.js"
     ]

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dimensions, SafeAreaView, View } from 'react-native';
+import { Dimensions, SafeAreaView, View, Animated } from 'react-native';
 import styled from 'styled-components/native';
 
 import HeaderBar from '../../components/HeaderBar';
@@ -41,8 +41,6 @@ const SignUp1 = ({ navigation }: any) => {
                     <SC.regularText>20대 / 화이자 / 남자</SC.regularText>
                 </SC.topContainer>
                 <SC.br></SC.br>
-                <SideEffectNavigation></SideEffectNavigation>
-
             </SC.container>
         </SafeAreaView>
     )
