@@ -11,6 +11,7 @@ import LoginPage from './src/screens/LoginPage';
 import SignUp1 from './src/screens/SignUp/SignUp1';
 import SignUp2 from './src/screens/SignUp/SignUp2';
 import SignUp3 from './src/screens/SignUp/SignUp3';
+import SignUp4 from './src/screens/SignUp/SignUp4';
 import MainPage from './src/screens/MainPage';
 import SideEffectPage from './src/screens/SideEffectPage';
 import ReportPage from './src/screens/ReportPage';
@@ -54,6 +55,7 @@ export default function App() {
         <Stack.Screen name="SignUp1" component={SignUp1} />
         <Stack.Screen name="SignUp2" component={SignUp2} />
         <Stack.Screen name="SignUp3" component={SignUp3} />
+        <Stack.Screen name="SignUp4" component={SignUp4} />
         <Stack.Screen name="MainPage" component={MainPage} />
         <Stack.Screen name="SideEffectPage" component={SideEffectPage} />
         <Stack.Screen name="ReportPage" component={ReportPage} />

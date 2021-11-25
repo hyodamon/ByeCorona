@@ -53,34 +53,30 @@ const SC = {
         color : white;
     `
 }
+
+const loginData = {
+    id: "1234",
+    pw: "1234",
+}
+
 const LoginPage = ({ navigation }: any) => {
 
     const [IDValue, setIDValue] = useState("");
     const [PWValue, setPWValue] = useState("");
 
     const login = () => {
-        axios.post('http://3.12.241.33:8000/auth/login', {
-            id: IDValue,
-            password: PWValue,
-        })
-            .then(function (response) {
-                response.data.success === "true" ?
-                    navigation.reset({ routes: [{ name: 'MainPage' }] })
-                    : Alert.alert(
-                        'Alert Title',
-                        'My Alert Msg',
-                        [
-                            { text: 'Ask me later', onPress: () => console.log('Ask me later pressed') },
-                            { text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
-                            { text: 'OK', onPress: () => console.log('OK Pressed') },
-                        ],
-                        { cancelable: false }
-                    )
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+        IDValue == loginData.id && PWValue == loginData.pw ?
+            navigation.reset({ routes: [{ name: "MainPage" }] })
+            :
+            Alert.alert(
+                "아이디 또는 비밀번호가 틀립니다!",
+                "다시 입력해주세요.",
+                [
+                    { text: "OK", onPress: () => console.log("OK Pressed") }
+                ]
+            );
     }
+
 
     return (
         <SafeAreaView style={{ backgroundColor: '#6666FF' }}>
@@ -91,12 +87,12 @@ const LoginPage = ({ navigation }: any) => {
                 </SC.introduceText>
                 <InputText placeHolder='아이디' type='id' value={IDValue} getValue={setIDValue}></InputText>
                 <InputText placeHolder='비밀번호' type='pw' value={PWValue} getValue={setPWValue}></InputText>
-                <SC.loginBtn onPress={() => {
-                    navigation.reset({ routes: [{ name: 'MainPage' }] })
-                }}>
+                <SC.loginBtn onPress={login}>
                     <SC.loginBtnText>로그인</SC.loginBtnText>
                 </SC.loginBtn>
-                <SC.signUpBtn onPress={login}>
+                <SC.signUpBtn onPress={() => {
+                    navigation.navigate('SignUp1');
+                }}>
                     <SC.signUpBtnText>회원가입</SC.signUpBtnText>
                 </SC.signUpBtn>
             </SC.container>

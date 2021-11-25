@@ -5,7 +5,7 @@ import styled from 'styled-components/native';
 import HeaderBar from '../../../components/HeaderBar';
 import SignUpInputForm from '../../../components/SignUpInputForm';
 import RadioBtnForm from '../../../components/RadioBtnForm';
-import CompleteBtn from '../../../components/CompleteBtn';
+import NextBtn from '../../../components/NextBtn';
 
 const { width, height } = Dimensions.get('window');
 
@@ -26,9 +26,9 @@ const SC = {
 
 const SignUp3 = ({ navigation }: any) => {
 
-    const vaccine1 = ["유", "무", "예정"]
+    const vaccine1 = ["유", "무"]
     const vaccine1type = ["화이자", "모더나", "얀센"]
-    const vaccine2 = ["유", "무", "예정"]
+    const vaccine2 = ["유", "무"]
     const vaccine2type = ["화이자", "모더나", "얀센"]
 
     return (
@@ -42,7 +42,7 @@ const SignUp3 = ({ navigation }: any) => {
                 <RadioBtnForm title="2차 백신 종류" data={vaccine2type}></RadioBtnForm>
                 <SignUpInputForm title="2차 백신 접종 예정 날짜" placeHolder="YYYY/MM/DD" type="text"></SignUpInputForm>
                 <SC.nextBtn>
-                    <CompleteBtn navigation={navigation} nextPage="CompletePage"></CompleteBtn>
+                    <NextBtn navigation={navigation} nextPage="SignUp4"></NextBtn>
                 </SC.nextBtn>
             </SC.container>
         </SafeAreaView>

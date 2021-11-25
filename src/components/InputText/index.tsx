@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 interface Props {
     placeHolder: string;
-    type: 'id' | 'pw';
+    type: 'id' | 'pw' | 'str';
     value: string;
     getValue: any;
 }
